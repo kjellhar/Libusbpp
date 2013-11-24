@@ -4,19 +4,23 @@
 #
 #-------------------------------------------------
 
+QT       += core
 QT       -= gui
 
 TARGET = QLibUsb
-TEMPLATE = lib
-CONFIG += staticlib
+CONFIG   += console
+CONFIG   -= app_bundle
+
+TEMPLATE = app
 
 SOURCES += \
+    main.cpp \
     usb.cpp \
-    usbimpl.cpp
+    device.cpp
 
 HEADERS += \
     usb.h \
-    usbimpl.h
+    device.h
 
 
 unix:!symbian {
@@ -27,3 +31,8 @@ unix:!symbian {
     }
     INSTALLS += target
 }
+
+
+LIBS += "/usr/local/lib/libusb-1.0.dylib"
+
+INCLUDEPATH += "/usr/local/include/libusb-1.0"

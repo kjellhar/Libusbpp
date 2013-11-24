@@ -3,8 +3,9 @@
 
 #include <QList>
 #include <QSharedPointer>
+#include <QString>
 
-#include "usbimpl.h"
+#include "device.h"
 
 namespace QLibUsb
 {
@@ -29,7 +30,7 @@ namespace QLibUsb
          * \note
          * \warning Multiple devices can be returned via this method, if attached.
          */
-//        static QList<QSharedPointer<Device> > FindDevice(uint16_t vendorID, uint16_t productID);
+        static QList<QSharedPointer<Device> > FindDevice(uint16_t vendorID, uint16_t productID);
 
         /*!
          * \brief
@@ -44,10 +45,10 @@ namespace QLibUsb
          * \note
          * \warning Multiple devices can be returned via this method, if attached.
          */
-//        static QList<QSharedPointer<Device> > FindDevice(uint16_t vendorID, uint16_t productID, std::wstring serialStr);
+        static QList<QSharedPointer<Device> > FindDevice(uint16_t vendorID, uint16_t productID, QString serialStr);
 
         /// Returns all devices attached to the system.
-//        static QList<QSharedPointer<Device> > FindAllDevices();
+        static QList<QSharedPointer<Device> > FindAllDevices();
 
     private:
 
@@ -56,8 +57,7 @@ namespace QLibUsb
         static void Initialize();
 
 
-        /// LibUSBImpl Singleton object
-        static QSharedPointer<UsbImpl> Impl_;
+        static QSharedPointer<libusb_context> m_pLibusb_context;
 
     };
 };

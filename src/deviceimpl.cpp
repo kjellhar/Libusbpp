@@ -12,7 +12,7 @@
 
 
 LibUSB::DeviceImpl::DeviceImpl( libusb_device* device )
-	: languageId(0)
+    : languageId(0)
 {
 
 	// Add a reference to pDevice and save it.
